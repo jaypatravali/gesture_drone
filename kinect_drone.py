@@ -93,15 +93,17 @@ def kinect_drone():
       
        uniq=Empty()
        vel=Twist()
-       if y_left>0.10:
-                
+       if y_left>0.10:      
+            #left hand to take off   
             rospy.loginfo(p.y)
             pubTakeoff.publish(uniq)  
        
        else:
+            #left hand to land
             pubLand.publish(uniq)  
        
        if y_right>0.44:
+            #right hand pitch backward
             vel.linear.x=-0.15
             vel.linear.y=0
             vel.linear.z=0
@@ -110,6 +112,7 @@ def kinect_drone():
             pub.publish(vel)       
                 
        elif y_right<-0.04:
+            #right hand pitch forward
             vel.linear.x=0.15
             vel.linear.y=0
             vel.linear.z=0
@@ -118,6 +121,8 @@ def kinect_drone():
             pub.publish(vel)
        
        elif x_right>0.60 :
+
+                #right hand roll right 
                 vel.linear.x=0
                 vel.linear.y=-0.20
                 vel.linear.z=0
@@ -126,6 +131,7 @@ def kinect_drone():
                 pub.publish(vel)
 
        elif x_right< 0.10:
+                #right hand roll left
                 vel.linear.x=0
                 vel.linear.y=0.20
                 vel.linear.z=0
@@ -134,6 +140,7 @@ def kinect_drone():
                 pub.publish(vel)
        
        else:
+           # no motion no command
            vel.linear.x=0
            vel.linear.y=0
            vel.linear.z=0
