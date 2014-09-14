@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-__author__ = 'tanjaymal'
+__author__ = 'jay patravali , tanvir parhar , srikanth malla '
 
 #libraries for kinect
 import rospy
